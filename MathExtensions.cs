@@ -34,21 +34,62 @@ namespace Libraries.Extensions
 {
 	public static partial class Extensions
 	{
-		public static bool IsDivisibleBy(this int value, int by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this long value, long by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this uint value, uint by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this ulong value, ulong by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this short value, short by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this ushort value, ushort by) { return (value % by) == 0; }
-		public static bool IsDivisibleBy(this decimal value, decimal by) { return (value % by) == 0; }
-		public static bool IsEven(this decimal value) { return value.IsDivisibleBy(2.0M); }
-		public static bool IsEven(this int value) { return value == ((value >> 1) << 1); }
-		public static bool IsEven(this uint value) { return value == ((value >> 1) << 1); }
-		public static bool IsEven(this long value) { return value == ((value >> 1) << 1); }
-		public static bool IsEven(this ulong value) { return value == ((value >> 1) << 1); }
-		public static bool IsEven(this ushort value) { return value == ((value >> 1) << 1); }
-		public static bool IsEven(this short value) { return value == ((value >> 1) << 1); }
-
+		public static bool IsDivisibleBy(this int value, int by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsDivisibleBy(this long value, long by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsDivisibleBy(this uint value, uint by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsDivisibleBy(this ulong value, ulong by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsDivisibleBy(this short value, short by) 
+    {
+      return (value % by) == 0;
+    }
+		public static bool IsDivisibleBy(this ushort value, ushort by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsDivisibleBy(this decimal value, decimal by) 
+    {
+      return (value % by) == 0; 
+    }
+		public static bool IsEven(this decimal value) 
+    { 
+      return value.IsDivisibleBy(2.0M); 
+    }
+		public static bool IsEven(this int value) 
+    {
+      return value == ((value >> 1) << 1); 
+    }
+		public static bool IsEven(this uint value) 
+    {
+      return value == ((value >> 1) << 1); 
+    }
+		public static bool IsEven(this long value) 
+    { 
+      return value == ((value >> 1) << 1); 
+    }
+		public static bool IsEven(this ulong value) 
+    { 
+      return value == ((value >> 1) << 1); 
+    }
+		public static bool IsEven(this ushort value) 
+    {
+      return value == ((value >> 1) << 1); 
+    }
+		public static bool IsEven(this short value) 
+    {
+      return value == ((value >> 1) << 1); 
+    }
 		public static float FastInverseSquareRoot(this float number)
 		{
 			const float threeHalfs = 1.5f;
