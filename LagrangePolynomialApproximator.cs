@@ -65,7 +65,7 @@ namespace Libraries.Extensions
 		private Func<int, decimal, decimal> LagrangePolynomialApproximation0(int i)
 		{
 			Func<int, decimal, decimal, decimal> fn = LagrangePolynomialApproximation2;
-			return fn.Curry(xc[i]);	
+      return (x,y) => fn(x,y,xc[i]);
 		}
 		private decimal LagrangePolynomialApproximation3(decimal x, int n)
 		{
@@ -95,7 +95,7 @@ namespace Libraries.Extensions
 		private Func<decimal, decimal> LagrangePolynomialApproximation1(int n)
 		{
 			Func<decimal, int, decimal> fn = LagrangePolynomialApproximation3;
-			return fn.Curry(n);
+      return (x) => fn(x,n);
 		}
 	}
 #endif

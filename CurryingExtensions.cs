@@ -34,12 +34,12 @@ using System.IO;
 namespace Libraries.Extensions
 {
 #if CURRYING
-	public static partial class Extensions
-	{
-		public static Func<R> Curry<T,R>(this Func<T,R> f, T value) 
-		{
-			return () => f(value); 
-		}
+  public static partial class Extensions
+  {
+    public static Func<R> Curry<T,R>(this Func<T,R> f, T value) 
+    {
+      return () => f(value); 
+    }
     public static Func<T1, Func<T2, R>> Curry<T1, T2, R>(this Func<T1,T2,R> f)
     {
       return x => y => f(x,y);
@@ -48,17 +48,17 @@ namespace Libraries.Extensions
     {
       return x => y => z => f(x,y,z);
     }
-		public static Func<T1,Func<T2, Func<T3, Func<T4,R>>>> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f)
-		{
+    public static Func<T1,Func<T2, Func<T3, Func<T4,R>>>> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f)
+    {
       return x => y => z => w => f(x,y,z,w);
-		}
+    }
 
-		//---------Begin .NET 4.0 Currying Functions----
+    //---------Begin .NET 4.0 Currying Functions----
     public static Func<T1, Func<T2, Func<T3, Func<T4, Func<T5, R>>>>> Curry<T1,T2,T3,T4,T5,R>(this Func<T1,T2,T3,T4,T5,R> f)
     {
       return x => y => z => w => h => f(x,y,z,w,h);
     }
 
-	}
+  }
 #endif
 }
