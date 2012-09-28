@@ -59,6 +59,30 @@ namespace Libraries.Extensions
       return x => y => z => w => h => f(x,y,z,w,h);
     }
 
+    //---------Begin Action Currying Functions----
+
+    public static Action Curry<T>(this Action<T> f, T value) 
+    {
+      return () => f(value); 
+    }
+    public static Action<T1, Action<T2>> Curry<T1,T2>(this Action<T1,T2> f)
+    {
+      return x => y => f(x,y);
+    }
+    public static Action<T1,Action<T2, Action<T3>>> Curry<T1,T2,T3>(this Action<T1,T2,T3> f)
+    {
+      return x => y => z => f(x,y,z);
+    }
+    public static Action<T1,Action<T2, Action<T3, Action<T4>>>> Curry<T1,T2,T3,T4>(this Action<T1,T2,T3,T4> f)
+    {
+      return x => y => z => w => f(x,y,z,w);
+    }
+
+    public static Action<T1, Action<T2, Action<T3, Action<T4, Action<T5>>>>> Curry<T1,T2,T3,T4,T5>(this Action<T1,T2,T3,T4,T5> f)
+    {
+      return x => y => z => w => h => f(x,y,z,w,h);
+    }
+
   }
 #endif
 }
