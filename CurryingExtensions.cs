@@ -40,89 +40,24 @@ namespace Libraries.Extensions
 		{
 			return () => f(value); 
 		}
-		public static Action Curry<T>(this Action<T> a, T value) 
+    public static Func<T1, Func<T2, R>> Curry<T1, T2, R>(this Func<T1,T2,R> f)
+    {
+      return x => y => f(x,y);
+    }
+    public static Func<T1,Func<T2, Func<T3, R>>> Curry<T1, T2, T3, R>(this Func<T1,T2,T3,R> f)
+    {
+      return x => y => z => f(x,y,z);
+    }
+		public static Func<T1,Func<T2, Func<T3, Func<T4,R>>>> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f)
 		{
-			return () => a(value);
-		}
-		public static Func<T1,R> Curry<T1,T2,R>(this Func<T1,T2,R> f, T2 val)
-		{
-			return (x) => f(x,val);
-		}
-		public static Action<T1> Curry<T1,T2> (this Action<T1,T2> f, T2 val)
-		{
-			return (x) => f(x,val);
-		}
-		public static Func<T1,T2,R> Curry<T1,T2,T3,R>(this Func<T1,T2,T3,R> f, T3 value) 
-		{
-			return (x,y) => f(x,y,value);
-		}
-		public static Action<T1,T2> Curry<T1,T2,T3>(this Action<T1,T2,T3> f, T3 value) 
-		{
-			return (x,y) => f(x,y,value);
-		}		
-		public static Func<T1,T2,T3,R> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f, T4 value) 
-		{
-			return (x,y,z) => f(x,y,z,value);
+      return x => y => z => w => f(x,y,z,w);
 		}
 
-		public static Action<T1,T2,T3> Curry<T1,T2,T3,T4>(this Action<T1,T2,T3,T4> f, T4 value)
-		{
-			return (x,y,z) => f(x,y,z,value);
-		}
-
-		//---------Begin Mutliple Currying Functions----
-		public static Action<T1,T2> Curry<T1,T2,T3,T4>(this Action<T1,T2,T3,T4> f, T4 val0, T3 val1)
-		{
-			return (x,y) => f(x,y,val1,val0);
-		}
-		public static Action<T1> Curry<T1,T2,T3,T4>(this Action<T1,T2,T3,T4> f, T4 val0, T3 val1, T2 val2)
-		{
-			return (x) => f(x,val2,val1,val0);
-		}
-		public static Action Curry<T1,T2,T3,T4>(this Action<T1,T2,T3,T4> f, T4 val0, T3 val1, T2 val2, T1 val3)
-		{
-			return () => f(val3,val2,val1,val0);
-		}
-
-		public static Action<T1> Curry<T1,T2,T3>(this Action<T1,T2,T3> f, T3 val0, T2 val1)
-		{
-			return (x) => f(x,val1,val0);
-		}
-		public static Action Curry<T1,T2,T3>(this Action<T1,T2,T3> f, T3 val0, T2 val1, T1 val2)
-		{
-			return () => f(val2,val1,val0);
-		}
-		public static Action Curry<T1,T2>(this Action<T1,T2> f, T2 val0, T1 val1)
-		{
-			return () => f(val1, val0);
-		}
-
-		public static Func<T1,T2,R> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f, T4 value, T3 value2)
-		{
-			return (x,y) => f(x,y,value2,value);
-		}
-		public static Func<T1,R> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f, T4 val0, T3 val1, T2 val2)
-		{
-			return (x) => f(x,val2,val1,val0);
-		}
-		public static Func<R> Curry<T1,T2,T3,T4,R>(this Func<T1,T2,T3,T4,R> f, T4 val0, T3 val1, T2 val2, T1 val3)
-		{
-			return () => f(val3,val2,val1,val0);
-		}
-
-		public static Func<T1,R> Curry<T1,T2,T3,R>(this Func<T1,T2,T3,R> fn, T3 val0, T2 val1)
-		{
-			return (x) => fn(x,val1,val0);
-		}
-		public static Func<R> Curry<T1,T2,T3,R>(this Func<T1,T2,T3,R> fn, T3 val0, T2 val1, T1 val2)
-		{
-			return () => fn(val2,val1,val0);
-		}
-		public static Func<R> Curry<T1,T2,R>(this Func<T1,T2,R> fn, T2 val0, T1 val1)
-		{
-			return () => fn(val1,val0);
-		}
-		//begin .NET 4.0 Extensions....ugh Func`17
+		//---------Begin .NET 4.0 Currying Functions----
+    public static Func<T1, Func<T2, Func<T3, Func<T4, Func<T5, R>>>>> Curry<T1,T2,T3,T4,T5,R>(this Func<T1,T2,T3,T4,T5,R> f)
+    {
+      return x => y => z => w => h => f(x,y,z,w,h);
+    }
 
 	}
 #endif
